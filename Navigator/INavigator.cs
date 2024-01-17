@@ -8,7 +8,7 @@ using System.Threading.Tasks;
     public interface INavigator
     {
         
-    void addRoute(Route route);
+    void addRoute(Route route); 
         void removeRoute(string routeId);
         bool contains(Route route);
         int size();

@@ -23,10 +23,15 @@
     {
         int hash = GetHash(key);
 
-        // Проверка на выход за пределы массива
+        
         if (hash < 0 || hash >= Capacity)
         {
             throw new ArgumentOutOfRangeException(nameof(hash), "Invalid hash value");
+        }
+        
+        if (table[hash].Any(r => r.Id == route.Id))
+        {
+            throw new ArgumentException($"An element with the same Id '{route.Id}' already exists.", nameof(route));
         }
 
         table[hash].Add(route);

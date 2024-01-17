@@ -74,8 +74,8 @@ public class Navigator : INavigator
     {
         var favoriteRoutes = routes.Values()
             .Where(route => route.IsFavorite && !route.LocationPoints.First().Equals(destinationPoint))
-            .OrderBy(route => route.Distance)  // Сортировка по расстоянию в порядке возрастания
-            .ThenByDescending(route => route.Popularity);  // Сортировка по популярности в порядке убывания
+            .OrderBy(route => route.Distance)  
+            .ThenByDescending(route => route.Popularity);  
 
         return favoriteRoutes;
     }
@@ -83,10 +83,10 @@ public class Navigator : INavigator
     public IEnumerable<Route> getTop3Routes()
     {
         var topRoutes = routes.Values()
-            .OrderByDescending(route => route.Popularity)  // Сортировка по популярности в порядке убывания
-            .ThenBy(route => route.Distance)  // Сортировка по расстоянию в порядке возрастания
-            .ThenBy(route => route.LocationPoints.Count)  // Сортировка по количеству точек местоположения в порядке возрастания
-            .Take(3);  // Взять топ 3
+            .OrderByDescending(route => route.Popularity)  
+            .ThenBy(route => route.Distance)  
+            .ThenBy(route => route.LocationPoints.Count)  
+            .Take(3);  
 
         return topRoutes;
     }

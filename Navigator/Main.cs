@@ -22,7 +22,16 @@
         Route retrievedRoute = navigator.getRoute("2");
         if (retrievedRoute != null)
         {
-            Console.WriteLine("Полученный маршрут: " + retrievedRoute.Id);
+            Console.WriteLine("Полученный маршрут: " + retrievedRoute.ToString());
+        }
+        else
+        {
+            Console.WriteLine("Маршрут не найден");
+        }
+        
+        if (navigator.contains(route2)== true)
+        {
+            Console.WriteLine("Маршрут  найден");
         }
         else
         {
@@ -35,21 +44,21 @@
         Console.WriteLine("\nРезультат поиска:");
         foreach (var route in searchResult)
         {
-            Console.WriteLine($"Маршрут {route.Id} - Расстояние: {route.Distance}, Популярность: {route.Popularity}");
+            Console.WriteLine($"Маршрут {route.Id} - Расстояние: {route.Distance}, Популярность: {route.Popularity}  Маршруты: [{string.Join(", ", route.LocationPoints)}]");
         }
 
         IEnumerable<Route> favoriteRoutes = navigator.getFavoriteRoutes("CityE");
         Console.WriteLine("\nИзбранный Маршрут:");
         foreach (var route in favoriteRoutes)
         {
-            Console.WriteLine($"Маршрут {route.Id} - Расстояние: {route.Distance}, Популярность: {route.Popularity}");
+            Console.WriteLine($"Маршрут {route.Id} - Расстояние: {route.Distance}, Популярность: {route.Popularity} Маршруты: [{string.Join(", ", route.LocationPoints)}]");
         }
 
         IEnumerable<Route> top3Routes = navigator.getTop3Routes();
         Console.WriteLine("\nToп 3 Маршрута:");
         foreach (var route in top3Routes)
         {
-            Console.WriteLine($"Маршрут {route.Id} - Расстояние: {route.Distance}, Популярность: {route.Popularity}");
+            Console.WriteLine($"Маршрут {route.Id} - Расстояние: {route.Distance}, Популярность: {route.Popularity} Маршруты: [{string.Join(", ", route.LocationPoints)}]");
         }
 
     }
