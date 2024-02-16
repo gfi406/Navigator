@@ -4,23 +4,37 @@ using System.Linq;
 
 public class Navigator : INavigator
 {
-    private Htable routes; // Заменяем Dictionary на SimpleHashTable
+    private Htable routes; 
     private HashSet<string> routeIds;
 
     public Navigator()
     {
-        routes = new Htable(); // Используем вашу хеш-таблицу
+        routes = new Htable(); 
         routeIds = new HashSet<string>();
     }
     
 
     public void addRoute(Route route)
     {
-        if (!routeIds.Contains(route.Id))
+        string routeKey = $"{route.LocationPoints.First()}-{route.LocationPoints.Last()}-{route.Distance}";
+
+       // Console.WriteLine(routeKey.ToString());
+
+        if (!routeIds.Contains(routeKey))
         {
-            routes.Add(route.Id, route);
-            routeIds.Add(route.Id);
+            if (!routes.Values().Any(existingRoute => existingRoute.Equals(route)))
+            {
+                routes.Add(route.Id, route);
+                routeIds.Add(routeKey);
+            }
         }
+        else
+        {
+            // А по ебалу?
+            Console.WriteLine($"Маршрут '{routeKey}' уже есть");
+        }
+        
+
     }
 
     public void removeRoute(string routeId)
@@ -44,7 +58,15 @@ public class Navigator : INavigator
 
     public Route getRoute(string routeId)
     {
-        return routes.GetValueOrDefault(routeId, null);
+        try
+        {
+            return routes.GetValueOrDefault(routeId, null);
+        }
+        catch
+        {
+            Console.WriteLine("Маршрут не найден");
+            return null;
+        }
     }
 
     public void chooseRoute(string routeId)
@@ -59,11 +81,9 @@ public class Navigator : INavigator
     {
         var matchingRoutes = routes.Values()
             .Where(route => route.LocationPoints.First() == startPoint && route.LocationPoints.Last() == endPoint)
-            .OrderBy(route => route.LocationPoints.Count)  // Сортировка по количеству точек местоположения
-            .ThenByDescending(route => route.Popularity)  // Сортировка по популярности в порядке убывания
-            .ThenBy(route => route.Distance);  // Сортировка по расстоянию в порядке возрастания
-
-        // Поместить избранные маршруты в начало результата
+            .OrderBy(route => route.LocationPoints.Count)  
+            .ThenByDescending(route => route.Popularity) 
+            .ThenBy(route => route.Distance);  
         var favoriteRoutes = matchingRoutes.Where(route => route.IsFavorite);
         var nonFavoriteRoutes = matchingRoutes.Where(route => !route.IsFavorite);
 

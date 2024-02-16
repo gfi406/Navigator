@@ -21,12 +21,30 @@
             return false;
 
         Route other = (Route)obj;
-        return Id == other.Id;
+
+        
+        return Id == other.Id && Distance == other.Distance &&
+               IsFavorite == other.IsFavorite &&
+               Enumerable.SequenceEqual(LocationPoints, other.LocationPoints);
     }
 
     public override int GetHashCode()
     {
-        return Id.GetHashCode();
+        unchecked
+        {
+            int hash = 17;
+            hash = hash * 23 + Id.GetHashCode();
+            hash = hash * 23 + Distance.GetHashCode();
+            hash = hash * 23 + IsFavorite.GetHashCode();
+
+           
+            foreach (var point in LocationPoints)
+            {
+                hash = hash * 23 + point.GetHashCode();
+            }
+
+            return hash;
+        }
     }
 
     public override string ToString()
