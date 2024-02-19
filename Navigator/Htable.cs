@@ -26,12 +26,12 @@
         
         if (hash < 0 || hash >= Capacity)
         {
-            throw new ArgumentOutOfRangeException(nameof(hash), "Invalid hash value");
+            throw new ArgumentOutOfRangeException(nameof(hash), "Ошибка хеша"); // выкинет если хеш отрицательный или хеш таблица первысила размер
         }
         
         if (table[hash].Any(r => r.Id == route.Id))
         {
-            // throw new ArgumentException($"An element with the same Id '{route.Id}' already exists.", nameof(route));
+            // throw new ArgumentException($"An element with the same Id '{route.Id}' already exists.", nameof(route)); // должно выкидывать ошибку, но пусть в консоль кидает
             Console.WriteLine($"Маршрут '{route.Id}' уже есть");
 
 

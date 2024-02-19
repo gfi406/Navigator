@@ -99,7 +99,7 @@ public class Navigator : INavigator
             .OrderByDescending(route => route.Popularity)  
             .ThenBy(route => route.Distance)  
             .ThenBy(route => route.LocationPoints.Count)  
-            .Take(3);  
+            .Take(5);  
 
         return topRoutes;
     }

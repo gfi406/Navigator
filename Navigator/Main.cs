@@ -19,7 +19,17 @@
         Route route7 = new Route("7", 80.0, 4, true, new List<string> { "CityG", "CityA", "CityB" });
         Route route8 = new Route("8", 200.0, 7, false, new List<string> { "CityC", "CityD", "CityE" });
         Route route9 = new Route("9", 60.0, 5, true, new List<string> { "CityA", "CityF", "CityE" });
-        Route route10 = new Route("10", 60.0, 5, true, new List<string> { "CityA", "City3", "CityG" }); 
+        Route route10 = new Route("10", 60.0, 5, true, new List<string> { "CityA", "City3", "CityG" });
+        Route route11 = new Route("11", 120.0, 6, false, new List<string> { "CityB", "CityD", "CityF" });
+        Route route12 = new Route("12", 150.0, 8, true, new List<string> { "CityE", "CityA", "CityC" });
+        Route route13 = new Route("13", 90.0, 4, false, new List<string> { "CityG", "CityB", "City3" });
+        Route route14 = new Route("14", 180.0, 7, true, new List<string> { "CityD", "CityF", "CityA" });
+        Route route15 = new Route("15", 100.0, 5, false, new List<string> { "CityC", "CityG", "CityE" });
+        Route route16 = new Route("16", 80.0, 4, true, new List<string> { "CityA", "CityB", "City3" });
+        Route route17 = new Route("17", 220.0, 9, false, new List<string> { "CityG", "CityF", "CityC" });
+        Route route18 = new Route("18", 70.0, 3, true, new List<string> { "CityE", "CityB", "CityD" });
+        Route route19 = new Route("19", 130.0, 6, false, new List<string> { "City3", "CityA", "CityG" });
+        Route route20 = new Route("20", 110.0, 5, true, new List<string> { "CityC", "CityD", "CityF" });
 
 
         navigator.addRoute(route1);
@@ -32,6 +42,16 @@
         navigator.addRoute(route8);
         navigator.addRoute(route9);
         navigator.addRoute(route10);
+        navigator.addRoute(route11);
+        navigator.addRoute(route12);
+        navigator.addRoute(route13);
+        navigator.addRoute(route14);
+        navigator.addRoute(route15);
+        navigator.addRoute(route16);
+        navigator.addRoute(route17);
+        navigator.addRoute(route18);
+        navigator.addRoute(route19);
+        navigator.addRoute(route20);
 
 
         Console.WriteLine("Количество маршрутов в навигаторе: " + navigator.size());
