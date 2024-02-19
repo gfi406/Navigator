@@ -32,13 +32,16 @@
         if (table[hash].Any(r => r.Id == route.Id))
         {
             // throw new ArgumentException($"An element with the same Id '{route.Id}' already exists.", nameof(route));
-            Console.WriteLine("ERRR");
+            Console.WriteLine($"Маршрут '{route.Id}' уже есть");
+
+
         }
         else
         {
             table[hash].Add(route);
         }
-            
+
+
     }
 
     public Route Get(string routeId)

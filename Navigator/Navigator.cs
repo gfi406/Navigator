@@ -5,36 +5,29 @@ using System.Linq;
 public class Navigator : INavigator
 {
     private Htable routes; 
-    private HashSet<string> routeIds;
+    private Htable routeIds;
 
     public Navigator()
     {
         routes = new Htable(); 
-        routeIds = new HashSet<string>();
+        routeIds = new Htable();
     }
     
 
     public void addRoute(Route route)
     {
-        string routeKey = $"{route.LocationPoints.First()}-{route.LocationPoints.Last()}-{route.Distance}";
+       
 
-       // Console.WriteLine(routeKey.ToString());
-
-        if (!routeIds.Contains(routeKey))
+        if (!routes.Values().Any(existingRoute => existingRoute.Equals(route)))// Any с помощью линку возвращает true если хотябы один элемент соответствует условию equals
         {
-            if (!routes.Values().Any(existingRoute => existingRoute.Equals(route)))
-            {
-                routes.Add(route.Id, route);
-                routeIds.Add(routeKey);
-            }
+            
+            routes.Add(route.Id, route);
+            Console.WriteLine($"Маршрут '{route.Id}' добавлен");
         }
         else
         {
-            // А по ебалу?
-            Console.WriteLine($"Маршрут '{routeKey}' уже есть");
+            Console.WriteLine($"Маршрут '{route.Id}' уже есть");
         }
-        
-
     }
 
     public void removeRoute(string routeId)

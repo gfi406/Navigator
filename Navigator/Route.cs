@@ -17,15 +17,17 @@
    
     public override bool Equals(object obj)
     {
+
         if (obj == null || GetType() != obj.GetType())
+        {
             return false;
+        }
 
         Route other = (Route)obj;
 
-        
-        return Id == other.Id && Distance == other.Distance &&
-               IsFavorite == other.IsFavorite &&
-               Enumerable.SequenceEqual(LocationPoints, other.LocationPoints);
+        return Distance == other.Distance && 
+            LocationPoints[0] == other.LocationPoints[0] && // это 1я точка 
+            LocationPoints[LocationPoints.Count - 1] == other.LocationPoints[other.LocationPoints.Count - 1]; // это последняя 
     }
 
     public override int GetHashCode()

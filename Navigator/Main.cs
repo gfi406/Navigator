@@ -5,13 +5,16 @@
         
         INavigator navigator = new Navigator();
         Htable hashTable = new Htable();
+       
 
 
         Route route1 = new Route("1", 100.0, 5, true, new List<string> { "CityA", "CityB", "CityC" });
         Route route2 = new Route("2", 150.0, 3, false, new List<string> { "CityA", "CityD", "CityE" });
         Route route3 = new Route("3", 120.0, 8, true, new List<string> { "CityB", "CityC", "CityF" });
-        Route route4 = new Route("4", 230.0, 8, true, new List<string> { "CityA", "CityD", "CityG" });
+
+        Route route4 = new Route("4", 100.0, 8, true, new List<string> { "CityA", "CityG" });
         Route route5 = new Route("5", 100.0, 8, true, new List<string> { "CityA", "CityC" });
+
         Route route6 = new Route("6", 180.0, 6, false, new List<string> { "CityD", "CityE", "CityF" });
         Route route7 = new Route("7", 80.0, 4, true, new List<string> { "CityG", "CityA", "CityB" });
         Route route8 = new Route("8", 200.0, 7, false, new List<string> { "CityC", "CityD", "CityE" });
@@ -22,8 +25,8 @@
         navigator.addRoute(route1);
         navigator.addRoute(route2);
         navigator.addRoute(route3);
-        navigator.addRoute(route4);
-        navigator.addRoute(route5);
+        navigator.addRoute(route4);//
+        navigator.addRoute(route5);//
         navigator.addRoute(route6);
         navigator.addRoute(route7);
         navigator.addRoute(route8);
